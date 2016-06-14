@@ -5,6 +5,7 @@ PV = "${DISTRO_VERSION}"
 PR = "r1"
 
 SRC_URI="file://version.sh \
+         file://test.py \
 "
 
 PACKAGES = "${PN}"
@@ -49,9 +50,12 @@ do_install() {
 	echo "${@get_layers(bb, d)}" >> ${D}${sysconfdir}/craft-version
 
    	install -d ${D}${sysconfdir}/init.d/
+   	install -d ${D}${bindir}/
         install -m 0755 ${WORKDIR}/version.sh ${D}${sysconfdir}/init.d/version.sh
+        install -m 0755 ${WORKDIR}/test.py ${D}${bindir}/test.py
  
 }
 
 INITSCRIPT_NAME = "version.sh"
 INITSCRIPT_PARAMS = "start 1 S ."
+FILES_${PN} += "${bindir}/test.py"
