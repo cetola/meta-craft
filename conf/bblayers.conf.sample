@@ -1,0 +1,10 @@
+LCONF_VERSION = "6"
+
+BBPATH = "${TOPDIR}"
+BBFILES ?= ""
+
+BBLAYERS ?= " \
+    ##COREBASE##/meta \
+    ##COREBASE##/meta-selftest \
+    ##COREBASE##/meta-craft \
+"
