@@ -12,9 +12,12 @@ SRC_URI = "git://github.com/cetola/hello_dev.git;protocol=http"
 
 # Modify these as desired
 PV = "1.0+git${SRCPV}"
-SRCREV = "dba0305a89270a19b3f1e5515ccfd3290c4c830c"
+SRCREV = "dbeb1448cf67f6e78fa35ad25a9beeaff8fb0eb6"
 
 S = "${WORKDIR}/git"
+DEPENDS = "curl"
+RDEPENDS_${PN} = "curl"
+INSANE_SKIP_${PN} = "ldflags"
 
 
 # NOTE: this is a Makefile-only piece of software, so we cannot generate much of the
@@ -34,6 +37,9 @@ do_compile () {
 do_install () {
 	# NOTE: unable to determine what to put here - there is a Makefile but no
 	# target named "install", so you will need to define this yourself
-	:
-}
+    install -d ${D}/usr
+    install -d ${D}/usr/bin
 
+    install -m 0755 ${S}/hello ${D}/usr/bin
+    install -m 0755 ${S}/simple ${D}/usr/bin
+}
