@@ -14,3 +14,4 @@ inherit bin_package
 SRC_URI = "file://craft-bin.tar.gz"
 
 BBCLASSEXTEND = "native nativesdk"
+EXPORT_MANIFEST = "1"

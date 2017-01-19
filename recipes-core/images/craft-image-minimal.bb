@@ -9,8 +9,13 @@ IMAGE_INSTALL_append = "\
     openssh-scp \
     openssh-sftp-server \
     craft-version \
+    craft-bin \
 "
 
-inherit core-image
+inherit core-image bin_validate
+
+BIN_VAL_PKGS += " \
+    craft-bin \
+"
 
 export IMAGE_BASENAME = "craft-image-minimal"
