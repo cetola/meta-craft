@@ -9,6 +9,7 @@ IMAGE_INSTALL_append = "\
     openssh-scp \
     openssh-sftp-server \
     craft-version \
+    craft-bin \
 "
 
 inherit core-image
